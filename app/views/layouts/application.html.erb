@@ -6,11 +6,20 @@
 </head>
 <body>
   <div id="header">
+    <%= link_to "[AirBnB]", "/" %>
     <% if signed_in? -%>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+      <%= link_to "Trips", "#" %>
+      <%= link_to "Messages", "#" %>
+      <%= link_to "Help", "#" %>
+      <%= link_to t(".sign_out"), sign_out_path, method: :delete %>
+      Logged in as <%= link_to "#{current_user.first_name}", user_path(current_user) %> 
     <% else -%>
+      <%= link_to "Become a host", "#" %>
+      <%= link_to "Help", "#" %>
+      <%= link_to t(".sign_up"), sign_up_path %>
       <%= link_to t(".sign_in"), sign_in_path %>
     <% end -%>
+    
   </div>
 
   <div id="flash">

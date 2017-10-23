@@ -25,6 +25,13 @@ gem "clearance"
 # Use Figaro to securely configure Rails app
 gem "figaro"
 
+# Use OmniAuth for Facebook Login
+gem "omniauth"
+gem "omniauth-facebook"
+
+# Authorization and authentication with Google
+# gem install googleauth
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

@@ -1,19 +1,13 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
-    render :"index", layout: true
+    @listing = Listing.all
   end
 
-  # GET /listings/1
-  # GET /listings/1.json
-  def show
-  end
-
-  # GET /listings/new
   def new
     @listing = Listing.new
   end
@@ -27,7 +21,19 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
 
-    respond_to do |format|
+    resp
+    @listings = Listing.all
+    render :"index", layout: true
+  end
+
+  # GET /listings/1
+  # GET /listings/1.json
+  def show
+  end
+
+  # GET /listings/new
+  def new
+    @listing = Listond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
