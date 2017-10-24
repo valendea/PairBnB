@@ -25,6 +25,9 @@ gem "clearance"
 # Use Figaro to securely configure Rails app
 gem "figaro"
 
+# Use Carrierwave to upload files
+gem 'carrierwave', '~> 1.0'
+
 # Use OmniAuth for Facebook Login
 gem "omniauth"
 gem "omniauth-facebook"
