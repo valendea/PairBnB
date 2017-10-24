@@ -1,0 +1,9 @@
+<h1>Edit your profile</h1>
+
+	<%= form_for @user do |form| %>
+    <%= render partial: '/users/form', object: form %>
+
+    <div class="submit-field">
+      <%= form.submit "Update Details" %>
+    </div>
+  <% end %>

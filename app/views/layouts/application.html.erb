@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PairBnB</title>
-    <%= csrf_meta_tags %>
+<head>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id="header">
+    <%= link_to "[AirBnB]", "/" %>
+    <% if signed_in? -%>
+      <%= link_to "Trips", "#" %>
+      <%= link_to "Messages", "#" %>
+      <%= link_to "Help", "#" %>
+      <%= link_to t(".sign_out"), sign_out_path, method: :delete %>
+      Logged in as <%= link_to "#{current_user.first_name}", user_path(current_user) %> 
+    <% else -%>
+      <%= link_to "Become a host", "#" %>
+      <%= link_to "Help", "#" %>
+      <%= link_to t(".sign_up"), sign_up_path %>
+      <%= link_to t(".sign_in"), sign_in_path %>
+    <% end -%>
+    
+  </div>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <div id="flash">
+    <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%=h value %></div>
+    <% end %>
+  </div>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 </html>
