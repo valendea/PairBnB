@@ -1,12 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @listing.user %>
-</p>
-
-<p>
-  <strong>Title:</strong>
+  <strong>Property:</strong>
   <%= @listing.title %>
 </p>
 
@@ -16,12 +11,38 @@
 </p>
 
 <p>
-  <strong>Num of rooms:</strong>
+  <strong>Price:</strong>
+  <%= @listing.price %>
+</p>
+
+<p>
+  <strong>No of rooms:</strong>
   <%= @listing.num_of_rooms %>
 </p>
 
+<p>
+  <strong>No of bathroom:</strong>
+  <%= @listing.no_of_bathrooms %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<p>
+  <strong>House Rules:</strong>
+  <%= @listing.house_rules %>
+</p>
+
+<p>
+  <strong>Owned by:</strong>
+  <%= @listing.user.first_name + " " + @listing.user.last_name %>
+</p>
+
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Destroy', listing_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', listings_path %>
 
-<p>Render a template here</p>
-<%= render template: "listings/new" %>
+<!-- <p>Render a template here</p>
+<%#= render template: "listings/new" %> -->

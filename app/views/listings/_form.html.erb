@@ -12,12 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :listing_user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :title %>
+    <%= form.label :property %>
     <%= form.text_field :title, id: :listing_title %>
   </div>
 
@@ -27,8 +22,28 @@
   </div>
 
   <div class="field">
-    <%= form.label :num_of_rooms %>
+    <%= form.label :price %>
+    <%= form.number_field :price, id: :listing_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :no_of_rooms %>
     <%= form.number_field :num_of_rooms, id: :listing_num_of_rooms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :no_of_bathrooms %>
+    <%= form.number_field :no_of_bathrooms, id: :listing_no_of_bathrooms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :listing_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :house_rules %>
+    <%= form.text_area :house_rules, id: :listing_house_rules %>
   </div>
 
   <div class="actions">

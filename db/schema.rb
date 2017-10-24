@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023052703) do
+ActiveRecord::Schema.define(version: 20171024083736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20171023052703) do
     t.integer "num_of_rooms"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.integer "price"
+    t.integer "no_of_bathrooms"
+    t.string "house_rules"
+    t.boolean "verification", default: false
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -44,6 +49,7 @@ ActiveRecord::Schema.define(version: 20171023052703) do
     t.string "remember_token", limit: 128, null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
