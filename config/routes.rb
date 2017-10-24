@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get "/listings/:id/verify" => "listings#verify", as: :verify_listing
+
 resources :users, only: [:show, :edit, :update]
 
   resources :listings
@@ -17,6 +19,7 @@ resources :users, only: [:show, :edit, :update]
       only: [:create, :edit, :update]
   end
 
+  # delete "/"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"

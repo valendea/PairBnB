@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+gem 'figaro'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -34,6 +34,12 @@ gem "omniauth-facebook"
 
 # Authorization and authentication with Google
 # gem install googleauth
+
+# Using Faker in DBseed
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+
+# Using kaminari for pagination
+gem 'kaminari'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
