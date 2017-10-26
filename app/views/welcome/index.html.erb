@@ -2,4 +2,8 @@
 
 <p><%#= current_user.first_name %></p>
 
-<%= link_to "Create new listing", new_listing_path %>
+<% if signed_in? %>
+	<%= link_to "Create new listing", new_listing_path %><br>
+	<%= link_to "Edit My Profile", edit_user_path(current_user) %><br>
+	<%= link_to "Show All Listing", listings_path %>
+<% end %>

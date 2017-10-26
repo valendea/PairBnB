@@ -1,6 +1,14 @@
 <h1>Profile</h1>
 
+<% if @user.photo == [] || @user.photo == nil %>
+	<img src="http://www.hexatar.com/gallery/thumb/151208_020651_fe104ea6634.png" alt="picture" class="rounded-circle mr-3 float-left" style="width: 150px; height: 150px;">
+<% else %>
+	<%= image_tag @user.photo.url, class:"d-block w-10" %>
+<% end %>
+
 <p>Name: <%= @user.first_name + " " + @user.last_name %></p>
 <p>Member since <%= current_user.created_at %></p>
 
-<%= link_to "Edit My Profile", edit_user_path(current_user) %>
+<% if signed_in? %>
+	<%= link_to "Edit My Profile", edit_user_path(current_user) %>
+<% end %>

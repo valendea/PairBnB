@@ -4,7 +4,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-gem 'figaro'
+# gem 'figaro'
+gem 'fog'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -22,8 +23,14 @@ gem 'uglifier', '>= 1.3.0'
 # Use Clearance for user management
 gem "clearance"
 
+# Use Kaminari for pagination
+gem 'kaminari'
+
 # Use Figaro to securely configure Rails app
 gem "figaro"
+
+# Use Carrierwave to upload files
+gem 'carrierwave', '~> 1.0'
 
 # Use OmniAuth for Facebook Login
 gem "omniauth"

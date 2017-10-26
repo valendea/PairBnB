@@ -10,7 +10,6 @@ class Clearance::UsersController < Clearance::BaseController
   end
 
   def new
-
     @user = user_from_params
     render template: "users/new"
   end
@@ -51,12 +50,14 @@ class Clearance::UsersController < Clearance::BaseController
     last_name = user_params.delete(:last_name)
     email = user_params.delete(:email)
     password = user_params.delete(:password)
+    photo = user_params.delete(:photo)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.first_name = first_name
       user.last_name = last_name
       user.email = email
       user.password = password
+      user.photo = photo
     end
   end
 
