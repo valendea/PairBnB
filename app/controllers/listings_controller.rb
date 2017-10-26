@@ -6,9 +6,9 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    # @listings = Listing.order("created_at DESC").page params[:page]
+    # kaminari paginate
     @listings = Listing.order(:title).page params[:page]
-    # @listings = Listing.page(1).per(10)
+    # @listings = Listing.all
   end
 
   def new
@@ -92,14 +92,10 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-
-      params.require(:listing).permit(:user_id, :title, :property_type, :num_of_rooms, photos: [])
-
-      # params.require(:listing).permit(:user_id, :title, :property_type, :num_of_rooms, :price, :description, :no_of_bathrooms, :house_rules)
+      params.require(:listing).permit(:user_id, :title, :property_type, :num_of_rooms, :no_of_bathrooms, photos: [])
     end
 
     def allowed?
       return !current_user.customer?
-
     end
 end

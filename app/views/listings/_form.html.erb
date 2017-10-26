@@ -31,11 +31,6 @@
     <%= form.number_field :num_of_rooms, id: :listing_num_of_rooms %>
   </div>
 
-
-  <div class="photos">
-    <%= form.label :photos %>
-    <%= form.file_field :photos, multiple: true, id: :photos %>
-
   <div class="field">
     <%= form.label :no_of_bathrooms %>
     <%= form.number_field :no_of_bathrooms, id: :listing_no_of_bathrooms %>
@@ -50,6 +45,11 @@
     <%= form.label :house_rules %>
     <%= form.text_area :house_rules, id: :listing_house_rules %>
 
+  </div>
+
+  <div class="field">
+    <%= form.label :photos %>
+    <%= form.file_field :photos, multiple: true, id: :photos %>
   </div>
 
   <div class="actions">
