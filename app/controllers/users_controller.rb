@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
   	# render :show, layout: "abc"
   	# render means you go straight to app/views/users/show.html.erb
+    @bookings = @user.bookings
   end
 
   def edit

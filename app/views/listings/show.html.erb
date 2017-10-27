@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <% if @listing.photos != [] %> <!-- there are profile who doesn't have listing photo -->
-<!-- ---- -->
 
 <div class="container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -51,7 +50,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @listing.price %>
+  RM <%= @listing.price %> / night
 </p>
 
 <p>
@@ -80,6 +79,9 @@
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Destroy', listing_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Delete', listing_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', listings_path %>
 
+<% if signed_in? %>
+  <%= render partial: "bookings/form", locals: { booking: @booking } %>
+<% end %>

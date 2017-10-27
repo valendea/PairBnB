@@ -1,8 +1,14 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :password, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: (/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i), message: "has registered before"}
+
   has_many :authentications, dependent: :destroy
   has_many :listings, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   serialize :photo
   mount_uploader :photo, PhotoUploader

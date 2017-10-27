@@ -1,0 +1,36 @@
+<%= form_for booking, url: listing_bookings_path(@listing) do |form| %>
+  <% if booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- => ["id", "user_id", "listing_id", "start_date", "end_date", "no_of_guests", "created_at", "updated_at"] -->
+
+
+  <div class="field">
+    <%= form.label :no_of_guests %>
+    <%= form.text_field :no_of_guests, id: :booking_no_of_guests %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date, id: :booking_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date, id: :booking_end_date %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit "Submit Booking" %>
+  </div>
+<% end %>
