@@ -1,14 +1,45 @@
 <h1>Profile</h1>
 
-<% if @user.photo == [] || @user.photo == nil %>
+<% if @user.photo.url.nil? %>
 	<img src="http://www.hexatar.com/gallery/thumb/151208_020651_fe104ea6634.png" alt="picture" class="rounded-circle mr-3 float-left" style="width: 150px; height: 150px;">
 <% else %>
-	<%= image_tag @user.photo.url, class:"d-block w-10" %>
+	<%= image_tag @user.photo.url, alt: 'picture', class:"rounded-circle mr-3 float-left", height: 150, width:150 %>
 <% end %>
 
 <p>Name: <%= @user.first_name + " " + @user.last_name %></p>
-<p>Member since <%= current_user.created_at %></p>
+<p>Member since <%= current_user.created_at.strftime('%d %B %Y') %></p>
 
 <% if signed_in? %>
 	<%= link_to "Edit My Profile", edit_user_path(current_user) %>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h2>Bookings</h2>
+	<table class="table">
+		<tr>
+			<th>Listing Title</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>No of Guests</th>
+			<th>Total Prices</th>
+			<th></th>
+			<th>Actions</th>
+			<th></th>
+		</tr>
+
+		<% @bookings.each do |booking| %>
+		<tr>
+			<td><%= link_to booking.listing.title, booking.listing %></td>
+			<td><%= booking.start_date.strftime('%d %B %Y') %></td>
+			<td><%= booking.end_date.strftime('%d %B %Y') %></td>
+			<td><%= booking.no_of_guests %></td>
+			<td>RM <%= booking.total_price %></td>
+			<td><%= link_to 'Show', booking %></td>
+      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+      <td><%= link_to 'Delete', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<% end %>
+
+	</table>
 <% end %>

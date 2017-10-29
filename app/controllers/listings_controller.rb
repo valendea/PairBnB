@@ -8,6 +8,10 @@ class ListingsController < ApplicationController
   def index
     # kaminari paginate
     @listings = Listing.order(:title).page params[:page]
+    # @hash = Gmaps4rails.build_markers(@users) do |listing, marker|
+    #   marker.lat @listing.latitude
+    #   marker.lng @listing.longitude
+    # end
     # @listings = Listing.all
   end
 
@@ -28,7 +32,6 @@ class ListingsController < ApplicationController
       flash[:notice] = "This property has been verified."
       redirect_to "/"
     end
-
   end
 
   # POST /listings
@@ -44,6 +47,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @booking = @listing.bookings.new
   end
 
   # POST /listings
@@ -92,7 +96,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:user_id, :title, :property_type, :num_of_rooms, :no_of_bathrooms, photos: [])
+      params.require(:listing).permit(:user_id, :title, :property_type, :num_of_rooms, :no_of_bathrooms, :price, :description, :house_rules, :longitude, :latitude, :address, photos: [])
     end
 
     def allowed?

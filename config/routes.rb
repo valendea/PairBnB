@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bookings
   # get 'users/show'
 
   get 'users/edit'
@@ -7,9 +8,14 @@ Rails.application.routes.draw do
 
   get "/listings/:id/verify" => "listings#verify", as: :verify_listing
 
-resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]
 
-  resources :listings
+  resources :listings do
+    resources :bookings, only: [:create]
+  end
+
+  resources :bookings, only: [:destroy]
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
