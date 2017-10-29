@@ -12,7 +12,8 @@
       <%= link_to t(".sign_in"), sign_in_path %>
     </div>
 
-  <%= link_to "Sign up with Facebook", "/auth/facebook" %>
+  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
 
   <% end %>
 </div>

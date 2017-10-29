@@ -1,0 +1,2 @@
+class CreateGoogleAuth < ApplicationRecord
+end
