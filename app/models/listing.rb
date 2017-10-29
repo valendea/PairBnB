@@ -10,6 +10,9 @@ class Listing < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than: 0, only_integer: true }
   validates :house_rules, presence: true
 
+  geocoded_by :address
+  after_validation :geocode
+
   serialize :photos, Array
   mount_uploaders :photos, PhotoUploader
 
