@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/bookings/:id/braintree/new', to: "braintree#new", as:"braintree_new"
+  post 'braintree/checkout'
+
   get 'sessions/create'
 
   get 'sessions/destroy'

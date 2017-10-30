@@ -1,6 +1,11 @@
 class Booking < ApplicationRecord
 	belongs_to :user
 	belongs_to :listing
+
+	validates :start_date, presence: true
+	validates :end_date, presence: true
+	validates :no_of_guests, presence: true
+
 	validate :check_overlapping_dates
 	validates :no_of_guests, presence: true, numericality: { greater_than: 0, only_integer: true }
 	# validate no_of_guests is always positive
