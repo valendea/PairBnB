@@ -45,6 +45,9 @@ gem "omniauth-facebook"
 # Authorization and authentication with Google
 gem 'omniauth-google-oauth2'
 
+# Use Braintree for payment
+gem 'braintree'
+
 # Using Faker in DBseed
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
