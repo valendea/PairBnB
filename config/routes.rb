@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/bookings/:id/braintree/new', to: "braintree#new", as:"braintree_new"
-  post 'braintree/checkout'
+  post '/bookings/:id/braintree/checkout', to: 'braintree#checkout', as: "braintree_checkout"
 
   get 'sessions/create'
 
