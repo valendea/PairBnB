@@ -5,12 +5,9 @@ class Booking < ApplicationRecord
 	validates :start_date, presence: true
 	validates :end_date, presence: true
 	validates :no_of_guests, presence: true
-
-	validate :check_overlapping_dates
 	validates :no_of_guests, presence: true, numericality: { greater_than: 0, only_integer: true }
-	# validate no_of_guests is always positive
+	validate :check_overlapping_dates, on: :create
 	validate :start_date_should_be_after_today
-	# validate start_date should be after today
 
 	def check_overlapping_dates
 		listing.bookings.each do |prev_booking|

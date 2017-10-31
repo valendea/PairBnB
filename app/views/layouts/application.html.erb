@@ -22,7 +22,7 @@
 <script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
 
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <%= csrf_meta_tag %>
@@ -84,8 +84,8 @@
               Log In
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"><%= link_to "Log In with Facebook", "/auth/facebook" %></a>
-              <a class="dropdown-item"><%= link_to "Log In with Google", "/auth/google_oauth2"%></a>
+              <%= link_to "Log In with Facebook", "/auth/facebook", class: 'dropdown-item' %>
+              <%= link_to "Log In with Google", "/auth/google_oauth2", class: 'dropdown-item' %></a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<%= sign_in_path %>">More Login Options</a>
             </div>

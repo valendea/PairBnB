@@ -47,9 +47,9 @@ ActiveRecord::Base.transaction do
     # listing['city'] = Faker::Address.city
     # listing['zipcode'] = Faker::Address.zip_code
     # listing['address'] = Faker::Address.full_address
-    listing['address'] = ["123 6th St. Melbourne, FL 32904", "71 Pilgrim Avenue Chevy Chase, MD 20815", "70 Bowman St. South Windsor, CT 06074", "4 Goldfield Rd. Honolulu, HI 96815", "44 Shirley Ave. West Chicago, IL 60185", "514 S. Magnolia St. Orlando, FL 32806", "488 Purple Finch St. Roanoke Rapids, NC 27870", "523 Miller St. Sunnyside, NY 11104", "258 Bradford Ave. Wilson, NC 27893"].sample
+    listing['address'] = ["123 6th St. Melbourne, FL 32904", "71 Pilgrim Avenue Chevy Chase, MD 20815", "70 Bowman St. South Windsor, CT 06074", "44 Shirley Ave. West Chicago, IL 60185", "514 S. Magnolia St. Orlando, FL 32806", "488 Purple Finch St. Roanoke Rapids, NC 27870", "523 Miller St. Sunnyside, NY 11104", "258 Bradford Ave. Wilson, NC 27893"].sample
 
-    listing['price'] = rand(80..500)
+    listing['price'] = rand(50..200)
     listing['description'] = Faker::Hipster.sentence
     listing['house_rules'] = ["Not suitable for pets", "No parties or events", "Check in time is flexible", "Check out by 10AM", "Parties are strictely prohibited", "No noise after 11pm"].sample
 
