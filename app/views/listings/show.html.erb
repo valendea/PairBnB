@@ -3,44 +3,6 @@
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
 
-
-<% if @listing.photos != [] %> <!-- there are profile who doesn't have listing photo -->
-
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <%= image_tag @listing.photos.first, class:"d-block w-100" %>
-      </div>
-        <% @listing.photos.shift %>
-        <% @listing.photos.each do |p| %>
-          <div class="carousel-item">
-            <%= image_tag p, alt: 'picture', class:"d-block w-100" %>
-          </div>
-        <% end %>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-
-<% end %>
 <br><br>
 <div class="container">
   <div class="row">
@@ -93,10 +55,9 @@
       <% if signed_in? && current_user == @listing.user %>
       <br><p>Action:
       <%= link_to 'Edit', edit_listing_path(@listing) %> |
-      <%= link_to 'Delete', listing_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <%= link_to 'Back', listings_path %>
-      </p>
+      <%= link_to 'Delete', listing_path, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
+      <h6><%= link_to 'Back', listings_path %></h6>
     </div>
     <div class="col">
     </div>
@@ -112,16 +73,15 @@
 <br><br>
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
+
+<!-- Google Maps -->
 </div>
 <script type="text/javascript">
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+   uluru = {"lat": <%= @listing.latitude %>, "lng": <%= @listing.longitude %>};
   markers = handler.addMarkers([
     {
-      // "lat": -58.17256227443719,
-      // "lng": -156.65548382095133,
-      "lat": <%= @listing.latitude %>,
-      "lng": <%= @listing.longitude %>,
       "picture": {
         "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
         "width":  32,
@@ -130,12 +90,60 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       "infowindow": "Maps"
     }
   ]);
+  var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: uluru
+        });
+  var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
-});</script>
+});
+</script>
 <p>
   <strong>Latitude:</strong>
   <%= @listing.latitude %> |
   <strong>Longitude:</strong>
   <%= @listing.longitude %>
 </p>
+
+<br>
+<% if @listing.photos != [] %> <!-- there are profile who doesn't have listing photo -->
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag @listing.photos.first, class:"d-block w-100" %>
+      </div>
+        <% @listing.photos.shift %>
+        <% @listing.photos.each do |p| %>
+          <div class="carousel-item">
+            <%= image_tag p, alt: 'picture', class:"d-block w-100" %>
+          </div>
+        <% end %>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<% end %>
