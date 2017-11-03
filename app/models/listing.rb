@@ -17,4 +17,20 @@ class Listing < ApplicationRecord
   mount_uploaders :photos, PhotoUploader
 
   paginates_per 10
+
+  scope :search_with_country, -> (country) { where("country like ?", "#{country}%")}
+
+  def self.search(search)
+    result = []
+    result << where("title LIKE ?", "%#{search}%")
+    result << where("property_type LIKE ?", "%#{search}%") 
+    result << where("description LIKE ?", "%#{search}%") 
+    result << where("address LIKE ?", "%#{search}%")
+    
+    i = 0
+    while i < 4
+      return result[i] if result[i].length > 0 
+      i += 1
+    end
+  end
 end

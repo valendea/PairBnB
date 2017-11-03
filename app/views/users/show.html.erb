@@ -1,21 +1,53 @@
-<h1>Profile</h1>
+<h2>Profile</h2>
 
+<div class="pt-3">
 <% if @user.photo.url.nil? %>
 	<img src="http://www.hexatar.com/gallery/thumb/151208_020651_fe104ea6634.png" alt="picture" class="rounded-circle mr-3 float-left" style="width: 150px; height: 150px;">
 <% else %>
 	<%= image_tag @user.photo.url, alt: 'picture', class:"rounded-circle mr-3 float-left", height: 150, width:150 %>
 <% end %>
+</div>
 
-<p>Name: <%= @user.first_name + " " + @user.last_name %></p>
-<p>Member since <%= current_user.created_at.strftime('%d %B %Y') %></p>
+<div class="pl-3">
+	<h5>Name: <%= @user.first_name + " " + @user.last_name %></h5>
+	<p>Member since <%= current_user.created_at.strftime('%d %B %Y') %></p>
+</div>
 
 <% if signed_in? %>
-	<%= link_to "Edit My Profile", edit_user_path(current_user) %>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h2>Bookings</h2>
+	<h6><%= link_to "Edit My Profile", edit_user_path(current_user) %></h6>
+
+<div class="pt-7">
+	<br><br><br><br><br><br>
+	<h2>My Listings</h2>
+	<table class="table">
+		<tr>
+			<th>Listing Title</th>
+			<th>Property Type</th>
+			<th>Price</th>
+			<th>Address</th>
+			<th></th>
+			<th>Actions</th>
+			<th></th>
+		</tr>
+
+		<% @listings.each do |listing| %>
+		<tr>
+			<td><%= link_to listing.title, listing_path(listing.id) %></td>
+			<td><%= listing.property_type %></td>
+			<td>RM <%= listing.price %></td>
+			<td><%= listing.address %></td>
+			<td><%= link_to 'Show', listing_path %></td>
+      <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+      <td><%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<% end %>
+
+	</table>
+</div>
+
+<div class="pt-7">
+	<br><br><br>
+	<h2>My Bookings</h2>
 	<table class="table">
 		<tr>
 			<th>Listing Title</th>
@@ -42,4 +74,5 @@
 		<% end %>
 
 	</table>
+</div>
 <% end %>

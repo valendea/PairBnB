@@ -7,12 +7,13 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     # kaminari paginate
-    @listings = Listing.order(:title).page params[:page]
-    # @hash = Gmaps4rails.build_markers(@users) do |listing, marker|
-    #   marker.lat @listing.latitude
-    #   marker.lng @listing.longitude
-    # end
-    # @listings = Listing.all
+    if params[:search]
+
+      @listings = Listing.search(params[:search])
+      @listings = @listings.order("created_at DESC").page params[:page]
+    else
+      @listings = Listing.order(:title).page params[:page]
+    end
   end
 
   def new

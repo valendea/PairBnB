@@ -4,12 +4,13 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
+    @bookings = current_user.bookings
   end
 
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+    @bookings = @user.bookings
   end
 
   # GET /bookings/new
@@ -28,9 +29,12 @@ class BookingsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
     @booking = current_user.bookings.new(booking_params)
     @booking.listing_id = @listing.id
+    @host = @listing.user.email
     # byebug
     respond_to do |format|
       if @booking.save
+        # BookingMailer.notification_email(current_user.email, @host, @booking.listing.id, @booking.id).deliver_later
+        BookingJob.perform_later(current_user.email, @host, @booking.listing.id, @booking.id)
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else

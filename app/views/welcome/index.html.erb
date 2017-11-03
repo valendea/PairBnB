@@ -1,9 +1,146 @@
-<p>Hello</p>
+<h1 style="font-weight: bold;">Featured destinations</h1>
 
-<p><%#= current_user.first_name %></p>
+<div>
+	<!-- container pt-3 pb-5 -->
+	<div class="container pt-3 pb-5">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner row" role="listbox">
+			<div class="carousel-item active col-sm">
+				<%= image_tag 'paris.jpg', alt: 'Paris', height: 290, width: 190 %><br>
+				<span class="caption">Paris</span>
+			</div>
+			<div class="carousel-item active col-sm">
+				<%= image_tag 'miami.jpg', alt: 'Miam', height: 290, width: 190 %><br>
+				<span class="caption">Miami</span>
+			</div>
+			<div class="carousel-item active col-sm">
+				<%= image_tag 'tokyo.jpg', alt: 'Tokyo', height: 290, width: 190 %><br>
+				<span class="caption">Tokyo</span>
+			</div>
+			<div class="carousel-item active col-sm">
+				<%= image_tag 'cape_town.jpg', alt: 'Cape Town', height: 290, width: 190 %><br>
+				<span class="caption">Cape Town</span>
+			</div>
+			<div class="carousel-item active col-sm">
+				<%= image_tag 'london.jpg', alt: 'London', height: 290, width: 190 %><br>
+				<span class="caption">London</span>
+			</div>
+			<div class="carousel-item col-sm">
+				<%= image_tag 'seoul.jpg', alt: 'Seoul', height: 290, width: 190 %><br>
+				<span class="caption">Seoul</span>
+			</div>
+		</div>
+	</div>
+</div>
 
-<% if signed_in? %>
-	<%= link_to "Create new listing", new_listing_path %><br>
-	<%= link_to "Edit My Profile", edit_user_path(current_user) %><br>
-	<%= link_to "Show All Listing", listings_path %>
-<% end %>
+<h1 style="font-weight: bold;">Homes</h1>
+
+<div>
+	<div class="container pt-3 pb-5">
+		<div class="row">
+			<div class="col-sm">
+				<a class="navbar-brand pl-5" href="#">
+				<%= image_tag 'example-listing2.jpg', alt: 'listing-1', height: 130, width: 250 %><br>
+				<span class="homes-caption" style="font-weight: bold;">From $75 - Leccio House <br>
+				Entire apartment | 2 beds
+				</span>
+				</a>
+			</div>
+
+			<div class="col-sm">
+				<a class="navbar-brand pl-5" href="#">
+				<%= image_tag 'example-listing3.jpg', alt: 'listing-2', height: 130, width: 250 %><br>
+				<span class="homes-caption" style="font-weight: bold;">From $72 - Villa San Gennariello B&B <br>
+				Private room | 4 beds
+				</span>
+				</a>
+			</div>
+
+			<div class="col-sm">
+				<a class="navbar-brand pl-5" href="#">
+				<%= image_tag 'example-listing1.jpeg', alt: 'listing-3', height: 130, width: 250 %><br>
+				<span class="homes-caption" style="font-weight: bold;">From $90 - Cozy Flat <br>
+				Entire house | 3 beds
+				</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h1 style="font-weight: bold;">Popular reservations around the world</h1>
+
+<div>
+	<div class="container pt-3 pb-5">
+		<div class="row">
+			<div class="col-sm">
+				<a class="navbar-brand pl-5" href="#">
+				<%= image_tag 'example-listing2.jpg', alt: 'listing-1', height: 130, width: 250 %><br>
+				<span class="homes-caption" style="font-weight: bold;">From $75 - Leccio House <br>
+				Entire apartment | 2 beds
+				</span>
+				</a>
+			</div>
+
+			<div class="col-sm">
+				<a class="navbar-brand pl-5" href="#">
+				<%= image_tag 'example-listing3.jpg', alt: 'listing-2', height: 130, width: 250 %><br>
+				<span class="homes-caption" style="font-weight: bold;">From $72 - Villa San Gennariello B&B <br>
+				Private room | 4 beds
+				</span>
+				</a>
+			</div>
+
+			<div class="col-sm">
+				<a class="navbar-brand pl-5" href="#">
+				<%= image_tag 'example-listing1.jpeg', alt: 'listing-3', height: 130, width: 250 %><br>
+				<span class="homes-caption" style="font-weight: bold;">From $90 - Cozy Flat <br>
+				Entire house | 3 beds
+				</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<hr>
+<div class="container">
+  <div class="footer row">
+    <div class="col-6">
+    </div>
+    <div class="col">
+      <p style="font-size: 15px; font-weight: bold;">My-Airbnb</p>
+      <a href="#">About us</a><br>
+      <a href="#">Careers</a><br>
+      <a href="#">Press</a><br>
+      <a href="#">Policies</a><br>
+      <a href="#">Help</a><br>
+      <a href="#">Diversity & Belongings</a><br>
+    </div>
+    <div class="col">
+      <p style="font-size: 15px; font-weight: bold;">Discover</p>
+      <a href="#">Trust & Safety</a><br>
+      <a href="#">Travel Credit</a><br>
+      <a href="#">Gift Cards</a><br>
+      <a href="#">Airbnb Citizens</a><br>
+      <a href="#">Business Travel</a><br>
+      <a href="#">Guidebooks</a><br>
+      <a href="#">Airbnbmag</a><br>
+    </div>
+    <div class="col">
+      <p style="font-size: 15px; font-weight: bold;">Hosting</p>
+      <a href="#">Why Host</a><br>
+      <a href="#">Hospitality</a><br>
+      <a href="#">Responsible Hosting</a><br>
+      <a href="#">Community Center</a><br> 
+    </div>
+  </div>
+</div>
+
+<div class="bottom-pict" style="repeat-x bottom">
+	<img src="https://a0.muscache.com/airbnb/static/help/home/nitetime-c316030c2ec9d3e3a76579ffbad914a0.svg" alt="Border">
+</div>
+<!-- <div class="name-footer">
+	&copy; 2017. My-Airbnb by Valendea.
+</div> -->

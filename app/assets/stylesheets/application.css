@@ -101,3 +101,95 @@
   margin: 0 auto;
   padding: 1.875em;
 }
+
+a:link {
+  text-decoration: none;
+  font-family: 'Nunito', sans-serif;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: transparent;
+  color: black;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+}
+
+.booking {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+}
+
+.content {
+  padding-top: 70px;
+}
+
+.navbar {
+  font-size: 17px;
+}
+
+.caption {
+  margin: 0px !important;
+  word-wrap: break-word !important;
+  font-size: 15px !important;
+  line-height: 18px !important;
+  letter-spacing: 0.5px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  color: #484848 !important;
+  font-weight: 700 !important;
+  display: inline !important;
+}
+
+.homes-caption {
+  margin: 0px !important;
+  word-wrap: break-word !important;
+  font-size: 15px !important;
+  letter-spacing: 0.3px !important;
+  color: #484848 !important;
+  display: inline !important;
+  font-weight: bold;
+}
+
+.name-footer {
+  font-size: 12px;
+  text-align: center;
+}
+
+.footer {
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+.bottom-pict {
+  float: auto;
+  transform-origin: 0px 0px 0px 0px;
+  margin-top: 50px;
+  /*margin-left: -50px;*/
+  /*margin-right: -50px;*/
+  width: 100%;
+  /*position:absolute;*/
+  border: 0;
+  overflow-x: hidden;
+  display: block;
+  background-repeat: repeat-x;
+}
+
+.header {
+  font-size: 16px;
+}
+
+.smalltext {
+font-size: 15px;  
+}
+
+/*#search.form-control {
+  width: 100px;
+}*/

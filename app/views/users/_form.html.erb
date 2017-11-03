@@ -1,29 +1,25 @@
 
-<div class="text-field">
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
+<div class="form-group row">
+  <%= form.label :first_name, class: "col-sm-2 col-form-label" %>
+  <%= form.text_field :first_name, class: "col-sm-6", id: "inputEmail4" %>
 </div>
 
-<div class="text-field">
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
+<div class="form-group row">
+  <%= form.label :last_name, class: "col-sm-2 col-form-label" %>
+  <%= form.text_field :last_name, class: "col-sm-6" %>
 </div>
 
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
+<div class="form-group row">
+  <%= form.label :email, class: "col-sm-2 col-form-label" %>
+  <%= form.text_field :email, type: 'email', class: "col-sm-6" %>
 </div>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+<div class="form-group row">
+  <%= form.label :password, class: "col-sm-2 col-form-label" %>
+  <%= form.password_field :password, class: "col-sm-6" %>
 </div>
 
-<div class="field">
-	<%= form.label :photo %>
-	<%= form.file_field :photo, id: :photo %>
-</div>
-
-<div>
-	<span></span>
+<div class="form-group row">
+	<%= form.label :profile_picture, class: "col-sm-2 col-form-label" %>
+	<%= form.file_field :photo, id: :photo, class: 'btn btn-light' %>
 </div>

@@ -54,6 +54,9 @@ gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Using kaminari for pagination
 gem 'kaminari'
 
+# Active job
+gem 'sidekiq'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

@@ -15,25 +15,25 @@
 
   <!-- => ["id", "user_id", "listing_id", "start_date", "end_date", "no_of_guests", "created_at", "updated_at"] -->
 
-
+  <br>
   <div class="field">
     <%= form.label :no_of_guests %>
     <%= form.text_field :no_of_guests, id: :booking_no_of_guests %>
   </div>
-
+  <br> 
   <div class="field">
     <%= form.label :start_date %>
     <%= form.date_field :start_date, id: :booking_start_date %>
   </div>
-
+  <br>
   <div class="field">
     <%= form.label :end_date %>
     <%= form.date_field :end_date, id: :booking_end_date %>
   </div>
-
+  <br>
 
   <div class="actions">
-    <%= form.submit "Submit Booking" %>
+    <%= form.submit "Submit Booking", class: 'btn btn-outline-dark' %>
   </div>
 <% end %>
 
