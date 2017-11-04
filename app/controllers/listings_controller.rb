@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
     if params[:search]
       @listings = Listing.search(params[:search])
       if @listings.nil?
-        flash[:notice] = "There are no posts containing the terms #{params[:search]}"
+        flash[:notice] = "There are no posts containing the terms \"#{params[:search]}\""
         redirect_to "/"
       else
        @listings = @listings.order("created_at DESC").page params[:page]
