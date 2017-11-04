@@ -8,9 +8,13 @@ class ListingsController < ApplicationController
   def index
     # kaminari paginate
     if params[:search]
-
       @listings = Listing.search(params[:search])
-      @listings = @listings.order("created_at DESC").page params[:page]
+      if @listings.nil?
+        flash[:notice] = "There are no posts containing the terms #{params[:search]}"
+        redirect_to "/"
+      else
+       @listings = @listings.order("created_at DESC").page params[:page]
+     end
     else
       @listings = Listing.order(:title).page params[:page]
     end
